@@ -24,6 +24,9 @@
     <ClInclude Include="..\..\Sources\Rumia\RumiaArray.h" />
     <ClInclude Include="..\..\Sources\Rumia\RumiaIterator.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Sources\Rumia\Rumia.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{28783D01-441D-4C3F-8E6C-EBD309C65F09}</ProjectGuid>
