@@ -44,3 +44,5 @@ Builds/Intermediate/Mile/Debug/vc140.idb
 *.ipdb
 *.ilk
 *.idb
+*.db-wal
+*.db-shm
