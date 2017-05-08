@@ -5,4 +5,15 @@
       <UniqueIdentifier>{e0dc0719-9a6d-41d5-ad2e-c920ba146375}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Sources\RumiaIterator.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\RumiaAllocator.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\DefaultAllocator.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

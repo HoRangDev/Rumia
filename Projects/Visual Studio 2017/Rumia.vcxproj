@@ -18,6 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Sources\RumiaAllocator.h" />
+    <ClInclude Include="..\..\Sources\DefaultAllocator.h" />
+    <ClInclude Include="..\..\Sources\RumiaIterator.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{28783D01-441D-4C3F-8E6C-EBD309C65F09}</ProjectGuid>
