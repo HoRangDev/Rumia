@@ -2,6 +2,10 @@
 #include <cstdlib>
 #include <cassert>
 #define ALIGN_OF(...) __alignof(__VA_ARGS__)
+#define RUMIA_NEW(ALLOCATOR, TYPE, ...) ALLOCATOR.NewObject<TYPE>(__VA_ARGS__)
+#define RUMIA_DELETE(ALLOCATOR, TARGET) if(TARGET != nullptr) { ALLOCATOR.DeleteObject(TARGET); TARGET = nullptr; }
+#define RUMIA_NEW_ARRAY(ALLOCATOR, TYPE, LENGTH) ALLOCATOR.NewObjectArray<TYPE>(LENGTH)
+#define RUMIA_DELETE_ARRAY(ALLOCATOR, TARGET) if(TARGET != nullptr) { ALLOCATOR.DeleteObjectArray(TARGET); TARGET = nullptr; }
 
 namespace Rumia
 {
@@ -11,9 +15,9 @@ namespace Rumia
         virtual ~Allocator( ) { }
 
         template <typename T, typename... Args>
-        T* NewObject( Args&&... params, size_t Align = ALIGN_OF( T ) )
+        T* NewObject( Args&&... params )
         {
-            T* newMemory = ( T* ) ( AllocateAligned( sizeof( T ), Align ) );
+            T* newMemory = ( T* ) ( AllocateAligned( sizeof( T ), ALIGN_OF( T ) ) );
             return new ( newMemory ) T( std::forward<Args>( params )... );
         }
 
@@ -25,7 +29,7 @@ namespace Rumia
         }
 
         template <typename T>
-        T* NewObjectArray( size_t length, size_t Align = ALIGN_OF( T ) )
+        T* NewObjectArray( size_t length )
         {
             assert( length >= 1 );
             size_t headerSize = sizeof( size_t ) / sizeof( T );
@@ -35,7 +39,7 @@ namespace Rumia
                 headerSize += 1;
             }
             
-            T* origin = ( ( T* ) AllocateAligned( ( (sizeof( T ) * (length + headerSize )) ), Align ) );
+            T* origin = ( ( T* ) AllocateAligned( ( (sizeof( T ) * (length + headerSize )) ), ALIGN_OF( T ) ) );
             T* newMemory = origin + headerSize;
             *( ( ( size_t* ) ( newMemory - headerSize ) ) ) = length;
 
@@ -48,7 +52,7 @@ namespace Rumia
         }
 
         template <typename T>
-        void DeleteObjectArray( T* array, size_t Align = ALIGN_OF( T ) )
+        void DeleteObjectArray( T* array )
         {
             assert( array != nullptr );
             size_t headerSize = sizeof( size_t ) / sizeof( T );
@@ -62,7 +66,7 @@ namespace Rumia
             {
                 array[ index ].~T( );
             }
-            DeallocateAligned( array - headerSize, ( sizeof( T ) * ( length + headerSize ) ), Align );
+            DeallocateAligned( array - headerSize, ( sizeof( T ) * ( length + headerSize ) ), ALIGN_OF( T ) );
         }
 
         virtual void* Allocate( size_t size ) = 0;
