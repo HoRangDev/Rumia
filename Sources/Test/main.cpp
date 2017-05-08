@@ -1,6 +1,7 @@
 #include <iostream>
 #include <crtdbg.h>
 #include "DefaultAllocator.h"
+#include "RumiaArray.h"
 using namespace Rumia;
 
 #if _DEBUG | DEBUG
@@ -11,10 +12,10 @@ int main( )
 {
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
     DefaultAllocator allocator;
-    int* arr = allocator.NewObjectArray<int>( 5 );
+    int* arr = RUMIA_NEW_ARRAY( allocator, int, 5 );
     for ( int index = 0; index < 5; ++index )
     {
-        arr[ index ] = (index);
+        arr[ index ] = ( index );
     }
 
     for ( int index = 0; index < 5; ++index )
@@ -22,6 +23,19 @@ int main( )
         std::cout << arr[ index ] << std::endl;
     }
 
-    allocator.DeleteObjectArray<int>( arr );
+    RUMIA_DELETE_ARRAY( allocator, arr );
+
+    int a = 9;
+    Rumia::Array<int> dynamicArr( allocator );
+    dynamicArr.Push( a );
+    dynamicArr.Push( 8 );
+    dynamicArr.Push( 7 );
+    dynamicArr.Push( 6 );
+
+    for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
+    {
+        std::cout << dynamicArr[ index ] << std::endl;
+    }
+
     return 0;
 }
