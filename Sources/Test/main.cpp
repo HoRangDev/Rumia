@@ -12,18 +12,6 @@ int main( )
 {
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
     DefaultAllocator allocator;
-    int* arr = RUMIA_NEW_ARRAY( allocator, int, 5 );
-    for ( int index = 0; index < 5; ++index )
-    {
-        arr[ index ] = ( index );
-    }
-
-    for ( int index = 0; index < 5; ++index )
-    {
-        std::cout << arr[ index ] << std::endl;
-    }
-
-    RUMIA_DELETE_ARRAY( allocator, arr );
 
     int a = 9;
     Rumia::Array<int> dynamicArr( allocator );
@@ -32,19 +20,40 @@ int main( )
     dynamicArr.Push( 7 );
     dynamicArr.Push( 6 );
 
+    std::cout << "1. Original Arr" << std::endl;
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
         std::cout << dynamicArr[ index ] << std::endl;
     }
+    std::cout << std::endl;
 
-    std::cout << "\tResized" << std::endl;
+    std::cout << "2. Resized" << std::endl;
     dynamicArr.Resize( 7, 0 );
-    dynamicArr.Insert( 6, 100 );
-
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
         std::cout << dynamicArr[ index ] << std::endl;
     }
+    std::cout << std::endl;
+
+    std::cout << "3. Insert" << std::endl;
+    dynamicArr.Insert( 3, 300 );
+    dynamicArr.Insert( 8, 100 );
+    for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
+    {
+        std::cout << dynamicArr[ index ] << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "4. Pop" << std::endl;
+    for ( int index = 0; index < 2; ++index )
+    {
+        std::cout << "Poped: " << dynamicArr.Pop( ) << std::endl;
+    }
+    for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
+    {
+        std::cout << dynamicArr[ index ] << std::endl;
+    }
+    std::cout << std::endl;
 
     return 0;
 }
