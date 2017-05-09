@@ -1,13 +1,12 @@
 #pragma once
 #include <type_traits>
 #include "DefaultAllocator.h"
-#include <vector>
 
 namespace Rumia
 {
     /* Rumia::Array is Dynamic Array class **/
     template <typename T, typename TAllocator = Rumia::DefaultAllocator,
-        typename IsBaseOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>::type>
+        typename IsChlidOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>::type>
         class Array
     {
     public:
@@ -186,6 +185,16 @@ namespace Rumia
 
                 m_capacity = targetCapacity;
             }
+        }
+
+        T& At( size_t index )
+        {
+            return m_elements[ index ];
+        }
+
+        T& At( size_t index ) const
+        {
+            return m_elements[ index ];
         }
 
         void Clear( bool resetReserve = true )
