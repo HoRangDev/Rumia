@@ -38,7 +38,9 @@ int main( )
     }
 
     std::cout << "\tResized" << std::endl;
-    dynamicArr.Resize( 100, 0 );
+    dynamicArr.Resize( 7, 0 );
+    dynamicArr.Insert( 6, 100 );
+
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
         std::cout << dynamicArr[ index ] << std::endl;

@@ -26,7 +26,7 @@ namespace Rumia
         T& operator[]( size_t index )
         {
             /* Out of range **/
-            assert( index >= 0 && index < m_size );
+            assert( !IsOutOfRange( index ) );
             return ( m_elements[ index ] );
         }
 
@@ -34,7 +34,7 @@ namespace Rumia
         T& operator[]( size_t index ) const
         {
             /* Out of range **/
-            assert( index >= 0 && index < m_size );
+            assert( !IsOutOfRange( index ) );
             return ( m_elements[ index ] );
         }
 
@@ -82,6 +82,12 @@ namespace Rumia
             m_elements[ m_size++ ] = std::forward<Ty>( element );
         }
 
+        T Pop( )
+        {
+            assert( m_size != 0 );
+            return m_elements[ --m_size ];
+        }
+
         template <typename... Args>
         void Emplace( Args&&... params )
         {
@@ -89,10 +95,18 @@ namespace Rumia
             m_elements[ m_size++ ] = T( std::forward<Args>( params )... );
         }
 
-        T Pop( )
+        template < typename Ty >
+        void Insert( size_t positionIndex, Ty&& instance )
         {
-            assert( m_size != 0 );
-            return m_elements[ --m_size ];
+            assert( !IsOutOfRange( positionIndex ) && positionIndex < m_size );
+            Growth( );
+            for ( size_t index = m_size - 1; index >= positionIndex; --index )
+            {
+                m_elements[ index + 1 ] = std::move( m_elements[ index ] );
+            }
+
+            m_elements[ positionIndex ] = std::forward<Ty>( instance );
+            ++m_size;
         }
 
         void Resize( size_t targetSize )
@@ -168,6 +182,11 @@ namespace Rumia
             {
                 Reserve( m_capacity * CapacityExtendScale );
             }
+        }
+
+        inline bool IsOutOfRange( size_t index )
+        {
+            return ( index >= m_size );
         }
 
     protected:
