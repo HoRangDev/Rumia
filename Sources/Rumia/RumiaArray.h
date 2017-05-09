@@ -95,6 +95,37 @@ namespace Rumia
             return m_elements[ --m_size ];
         }
 
+        void Resize( size_t targetSize )
+        {
+            if ( targetSize <= m_size )
+            {
+                for ( size_t index = ( m_size - 1 ); index > targetSize; --index )
+                {
+                    m_elements[ index ].~T( );
+                }
+            }
+            else if ( targetSize > m_capacity )
+            {
+                Reserve( targetSize );
+            }
+
+            m_size = targetSize;
+        }
+
+        void Resize( size_t targetSize, const T& placeHolder )
+        {
+            size_t originSize = m_size;
+            Resize( targetSize );
+
+            if ( originSize < m_size )
+            {
+                for ( size_t index = originSize; index < m_size; ++index )
+                {
+                    m_elements[ index ] = placeHolder;
+                }
+            }
+        }
+
         void Reserve( size_t targetCapacity )
         {
             assert( targetCapacity != 0 && targetCapacity > m_capacity );

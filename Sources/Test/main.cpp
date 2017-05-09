@@ -37,5 +37,12 @@ int main( )
         std::cout << dynamicArr[ index ] << std::endl;
     }
 
+    std::cout << "\tResized" << std::endl;
+    dynamicArr.Resize( 100, 0 );
+    for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
+    {
+        std::cout << dynamicArr[ index ] << std::endl;
+    }
+
     return 0;
 }
