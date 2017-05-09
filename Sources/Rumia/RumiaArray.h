@@ -98,7 +98,7 @@ namespace Rumia
         template < typename Ty >
         void Insert( size_t positionIndex, Ty&& instance )
         {
-            assert( !IsOutOfRange( positionIndex ) && positionIndex < m_size );
+            assert( !IsOutOfRange( positionIndex ) || ( positionIndex == m_size ) );
             Growth( );
             for ( size_t index = m_size - 1; index >= positionIndex; --index )
             {
