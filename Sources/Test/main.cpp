@@ -55,5 +55,8 @@ int main( )
     }
     std::cout << std::endl;
 
+    Rumia::Array<int> MovedArr = std::move( dynamicArr );
+    std::cout << dynamicArr.GetSize( ) << std::endl;
+
     return 0;
 }

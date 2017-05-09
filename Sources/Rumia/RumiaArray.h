@@ -18,6 +18,32 @@ namespace Rumia
             Reserve( initCapacity );
         }
 
+        Array( const Array& target ) :
+            m_allocator( target.m_allocator ), m_size( target.m_size )
+        {
+            // Reserve Memory space
+            Reserve( target.m_capacity );
+
+            // Copy elements
+            for ( size_t index = 0; index < target.m_size; ++index )
+            {
+                m_elements[ index ] = target.m_elements[ index ];
+            }
+        }
+
+        Array( Array&& target ) :
+            m_allocator( std::move( target.m_allocator ) )
+        {
+            // Move element array
+            m_elements = target.m_elements;
+            m_capacity = target.m_capacity;
+            m_size = target.m_size;
+
+            target.m_elements = nullptr;
+            target.m_capacity = 0;
+            target.m_size = 0;
+        }
+
         virtual ~Array( )
         {
             RUMIA_DELETE_ARRAY( m_allocator, m_elements );
@@ -72,6 +98,10 @@ namespace Rumia
             m_capacity = target.m_capacity;
             m_size = target.m_size;
 
+            target.m_elements = nullptr;
+            target.m_capacity = 0;
+            target.m_size = 0;
+
             return ( *this );
         }
 
@@ -84,7 +114,7 @@ namespace Rumia
 
         T Pop( )
         {
-            assert( m_size != 0 );
+            assert( !IsEmpty( ) );
             return m_elements[ --m_size ];
         }
 
@@ -174,11 +204,13 @@ namespace Rumia
 
         inline size_t GetCapacity( ) const { return m_capacity; }
         inline size_t GetSize( ) const { return m_size; }
+        inline bool IsEmpty( ) const { return ( m_size == 0 ); }
+        inline bool IsFull( ) const { return ( m_size == m_capacity ); }
 
     protected:
         inline void Growth( )
         {
-            if ( m_size == m_capacity )
+            if ( IsFull( ) )
             {
                 Reserve( m_capacity * CapacityExtendScale );
             }
