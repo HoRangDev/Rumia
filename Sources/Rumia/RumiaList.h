@@ -86,7 +86,7 @@ namespace Rumia
             }
             else
             {
-                Node<T>* node = GetMostBackNode( );
+                Node<T>* node = GetMostLastNode( );
                 node->m_next = newNode;
                 newNode->m_prev = node;
             }
@@ -111,7 +111,7 @@ namespace Rumia
         T PopBack( )
         {
             assert( !IsEmpty( ) );
-            Node<T>* popNode = GetMostBackNode( );
+            Node<T>* popNode = GetMostLastNode( );
             if ( popNode == m_root )
             {
                 m_root = nullptr;
@@ -163,18 +163,7 @@ namespace Rumia
             }
         }
 
-        void DeleteNodes( Node<T>* root )
-        {
-            assert( root != nullptr && m_root != root );
-            for ( Node<T>* node = root; node != nullptr; )
-            {
-                Node<T>* nextNode = node->m_next;
-                RUMIA_DELETE( m_allocator, node );
-                node = nextNode;
-            }
-        }
-
-        inline Node<T>* GetMostBackNode( ) const
+        inline Node<T>* GetMostLastNode( ) const
         {
             if ( m_root != nullptr )
             {
