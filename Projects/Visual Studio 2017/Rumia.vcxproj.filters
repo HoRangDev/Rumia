@@ -18,6 +18,9 @@
     <ClInclude Include="..\..\Sources\Rumia\RumiaIterator.h">
       <Filter>Sources</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Rumia\RumiaList.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Rumia\Rumia.cpp">

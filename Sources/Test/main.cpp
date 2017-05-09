@@ -2,6 +2,7 @@
 #include <crtdbg.h>
 #include "DefaultAllocator.h"
 #include "RumiaArray.h"
+#include "RumiaList.h"
 using namespace Rumia;
 
 #if _DEBUG | DEBUG
@@ -13,6 +14,7 @@ int main( )
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
     DefaultAllocator allocator;
 
+    /*
     int a = 9;
     Rumia::Array<int> dynamicArr( allocator );
     dynamicArr.Push( a );
@@ -57,6 +59,20 @@ int main( )
 
     Rumia::Array<int> MovedArr = std::move( dynamicArr );
     std::cout << dynamicArr.GetSize( ) << std::endl;
+    */
 
+    Rumia::List<int> list( allocator );
+    list.PushBack( 1 );
+    list.PushBack( 2 );
+    list.PushBack( 3 );
+
+    Rumia::List<int> copyList( list );
+
+    std::cout << copyList.PopBack( ) << std::endl;
+    std::cout << copyList.PopFront( ) << std::endl;
+    copyList.PushFront( 9 );
+    std::cout << copyList.PopBack( ) << std::endl;
+    std::cout << copyList.PopBack( ) << std::endl;
+    std::cout << std::boolalpha << copyList.IsEmpty( ) << std::endl;
     return 0;
 }

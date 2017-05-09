@@ -23,6 +23,7 @@
     <ClInclude Include="..\..\Sources\Rumia\RumiaAllocator.h" />
     <ClInclude Include="..\..\Sources\Rumia\RumiaArray.h" />
     <ClInclude Include="..\..\Sources\Rumia\RumiaIterator.h" />
+    <ClInclude Include="..\..\Sources\Rumia\RumiaList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Rumia\Rumia.cpp" />
