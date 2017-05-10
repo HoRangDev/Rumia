@@ -4,32 +4,33 @@
 
 namespace Rumia
 {
-    template <typename T>
-    struct Node
-    {
-    public:
-        Node( ) :
-            m_prev( nullptr ), m_next( nullptr )
-        {
-        }
-
-        Node( const T& data, Node<T>* prev, Node<T>* next ) :
-            m_data( ( data ) ),
-            m_prev( prev ), m_next( next )
-        {
-        }
-
-    public:
-        T m_data;
-        Node<T>* m_prev;
-        Node<T>* m_next;
-
-    };
-
     template <typename T, typename TAllocator = Rumia::DefaultAllocator,
         typename IsChlidOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>>
         class List
     {
+    protected:
+        template <typename Ty>
+        struct Node
+        {
+        public:
+            Node( ) :
+                m_prev( nullptr ), m_next( nullptr )
+            {
+            }
+
+            Node( const Ty& data, Node<Ty>* prev, Node<Ty>* next ) :
+                m_data( ( data ) ),
+                m_prev( prev ), m_next( next )
+            {
+            }
+
+        public:
+            Ty m_data;
+            Node<Ty>* m_prev;
+            Node<Ty>* m_next;
+
+        };
+
     public:
         List( TAllocator& allocator ) :
             m_allocator(allocator), 

@@ -107,7 +107,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\..\Build\Test\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)..\..\Build\Logs\Test\$(Platform)\</IntDir>
-    <LibraryPath>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\..\Build\$(Configuration)\$(Platform)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -137,7 +137,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)..\..\Build\Test\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)..\..\Build\Logs\Test\$(Platform)\</IntDir>
-    <LibraryPath>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\..\Build\$(Configuration)\$(Platform)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
