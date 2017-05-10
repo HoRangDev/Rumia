@@ -10,6 +10,11 @@ namespace Rumia
         class Array
     {
     public:
+        Array( ) :
+            Array( TAllocator( ) )
+        {
+        }
+
         Array( TAllocator& allocator, size_t initCapacity = 2 ) :
             m_allocator( allocator ), m_elements( nullptr ), m_capacity( 0 ),
             m_size( 0 )
