@@ -129,7 +129,7 @@ namespace Rumia
         {
             assert( !IsOutOfRange( positionIndex ) || ( positionIndex == m_size ) );
             Growth( );
-            for ( size_t index = m_size - 1; index >= positionIndex; --index )
+            for ( size_t index = m_size - 1; index > positionIndex; --index )
             {
                 m_elements[ index + 1 ] = std::move( m_elements[ index ] );
             }
