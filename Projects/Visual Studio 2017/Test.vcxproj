@@ -28,10 +28,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp" />
+    <ClCompile Include="..\..\Sources\Test\ListTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h" />
+    <ClInclude Include="..\..\Sources\Test\ListTest.h" />
+    <ClInclude Include="..\..\Sources\Test\SomeClass.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

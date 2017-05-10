@@ -1,6 +1,6 @@
 #pragma once
 #ifdef __TEST__
-#include <gtest/gtest.h>
+#include "gtest\gtest.h"
 #include "RumiaArray.h"
 
 class ArrayTest : public testing::Test

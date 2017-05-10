@@ -10,6 +10,9 @@
     <Filter Include="Sources\Tests\Array">
       <UniqueIdentifier>{ea3c4ccc-1176-4e4c-bd40-a2138ac05c66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tests\List">
+      <UniqueIdentifier>{a5b03ec2-0a6a-4ad9-903c-c6e5e6ee0bcf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\main.cpp">
@@ -18,10 +21,19 @@
     <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp">
       <Filter>Sources\Tests\Array</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ListTest.cpp">
+      <Filter>Sources\Tests\List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
       <Filter>Sources\Tests\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ListTest.h">
+      <Filter>Sources\Tests\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\SomeClass.h">
+      <Filter>Sources\Tests</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
