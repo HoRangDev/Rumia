@@ -34,13 +34,15 @@ namespace Rumia
     public:
         List( TAllocator& allocator ) :
             m_allocator(allocator), 
-            m_root( nullptr )
+            m_root( nullptr ),
+            m_count( 0 )
         {
         }
 
         List( const List& target ) :
             m_allocator( target.m_allocator ),
-            m_root( nullptr )
+            m_root( nullptr ),
+            m_count( 0 )
         {
             Clear( );
             CopyFrom( target.m_root );
@@ -48,7 +50,8 @@ namespace Rumia
 
         List( List&& target ) :
             m_allocator( std::move( target.m_allocator ) ),
-            m_root( nullptr )
+            m_root( nullptr ),
+            m_count( 0 )
         {
             Clear( );
             m_root = target.m_root;
@@ -74,6 +77,8 @@ namespace Rumia
                 m_root->m_prev = newNode;
                 m_root = newNode;
             }
+
+            ++m_count;
         }
 
         template <typename Ty>
@@ -90,6 +95,8 @@ namespace Rumia
                 node->m_next = newNode;
                 newNode->m_prev = node;
             }
+
+            ++m_count;
         }
 
         T PopFront( )
@@ -105,6 +112,7 @@ namespace Rumia
                 m_root->m_prev = nullptr;
             }
 
+            --m_count;
             return std::move( data );
         }
 
@@ -124,6 +132,7 @@ namespace Rumia
             }
 
             RUMIA_DELETE( m_allocator, popNode );
+            --m_count;
             return std::move( data );
         }
 
@@ -140,6 +149,7 @@ namespace Rumia
         }
 
         inline bool IsEmpty( ) const { return ( m_root == nullptr ); }
+        inline size_t GetSize( ) const { return m_count; }
 
     protected:
         void CopyFrom( Node<T>* root )
@@ -182,6 +192,7 @@ namespace Rumia
     protected:
         TAllocator& m_allocator;
         Node<T>* m_root;
+        size_t m_count;
 
     };
 }
