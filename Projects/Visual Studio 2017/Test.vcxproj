@@ -27,7 +27,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Sources\Test\ArrayTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -109,7 +113,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\..\Build\Test\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)..\..\Build\Logs\Test\$(Platform)\</IntDir>
-    <LibraryPath>$(SolutionDir)..\..\ThirdParty\googletest\libs;$(SolutionDir)..\..\Build\Debug\$(Platform);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\..\ThirdParty\googletest\libs\x64;$(SolutionDir)..\..\Build\Debug\$(Platform);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -121,7 +125,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\..\Build\Test\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)..\..\Build\Logs\Test\$(Platform)\</IntDir>
-    <LibraryPath>$(SolutionDir)..\..\ThirdParty\googletest\libs;$(SolutionDir)..\..\Build\Debug\$(Platform);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\..\ThirdParty\googletest\libs\Win32;$(SolutionDir)..\..\Build\Debug\$(Platform);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -155,7 +159,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__TEST__;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)..\..\Sources\Test;$(SolutionDir)..\..\ThirdParty\googletest\include;$(SolutionDir)..\..\Sources\Rumia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -184,7 +188,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;__TEST__;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)..\..\Sources\Test;$(SolutionDir)..\..\ThirdParty\googletest\include;$(SolutionDir)..\..\Sources\Rumia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>

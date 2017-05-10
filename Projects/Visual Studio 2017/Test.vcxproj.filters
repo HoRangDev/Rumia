@@ -4,10 +4,24 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{baeabb3c-f598-436a-bf0c-7bc223d758df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tests">
+      <UniqueIdentifier>{a09d96cb-c9c9-4c64-b05a-6dc96a46bab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Tests\Array">
+      <UniqueIdentifier>{ea3c4ccc-1176-4e4c-bd40-a2138ac05c66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp">
+      <Filter>Sources\Tests\Array</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
+      <Filter>Sources\Tests\Array</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

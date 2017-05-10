@@ -1,5 +1,15 @@
 #include <iostream>
+#include <tchar.h>
 #include <crtdbg.h>
+
+#ifdef __TEST__
+#include "gtest\gtest.h"
+int _tmain( int argc, TCHAR* argv[ ] )
+{
+    testing::InitGoogleTest( &argc, argv );
+    return RUN_ALL_TESTS( );
+}
+#else
 #include "DefaultAllocator.h"
 #include "RumiaArray.h"
 #include "RumiaList.h"
@@ -8,6 +18,7 @@ using namespace Rumia;
 #if _DEBUG | DEBUG
 #define new new(_CLIENT_BLOCK, __FILE__, __LINE)
 #endif
+
 
 int main( )
 {
@@ -25,7 +36,7 @@ int main( )
     std::cout << "1. Original Arr" << std::endl;
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
-        std::cout << dynamicArr[ index ] << std::endl;
+    std::cout << dynamicArr[ index ] << std::endl;
     }
     std::cout << std::endl;
 
@@ -33,7 +44,7 @@ int main( )
     dynamicArr.Resize( 7, 0 );
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
-        std::cout << dynamicArr[ index ] << std::endl;
+    std::cout << dynamicArr[ index ] << std::endl;
     }
     std::cout << std::endl;
 
@@ -42,18 +53,18 @@ int main( )
     dynamicArr.Insert( 8, 100 );
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
-        std::cout << dynamicArr[ index ] << std::endl;
+    std::cout << dynamicArr[ index ] << std::endl;
     }
     std::cout << std::endl;
 
     std::cout << "4. Pop" << std::endl;
     for ( int index = 0; index < 2; ++index )
     {
-        std::cout << "Poped: " << dynamicArr.Pop( ) << std::endl;
+    std::cout << "Poped: " << dynamicArr.Pop( ) << std::endl;
     }
     for ( int index = 0; index < dynamicArr.GetSize( ); ++index )
     {
-        std::cout << dynamicArr[ index ] << std::endl;
+    std::cout << dynamicArr[ index ] << std::endl;
     }
     std::cout << std::endl;
 
@@ -76,3 +87,4 @@ int main( )
     std::cout << std::boolalpha << copyList.IsEmpty( ) << std::endl;
     return 0;
 }
+#endif
