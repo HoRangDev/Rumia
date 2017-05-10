@@ -31,11 +31,6 @@ namespace Rumia
         class List
     {
     public:
-        List( ) :
-            List( TAllocator( ) )
-        {
-        }
-
         List( TAllocator& allocator ) :
             m_allocator(allocator), 
             m_root( nullptr )
