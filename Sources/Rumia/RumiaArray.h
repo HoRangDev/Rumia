@@ -18,7 +18,7 @@ namespace Rumia
         }
 
         Array( const Array& target ) :
-            m_allocator( target.m_allocator ), m_size( target.m_size )
+            m_allocator( target.m_allocator ), m_elements( nullptr ), m_capacity( 0 ), m_size( 0 )
         {
             // Reserve Memory space
             Reserve( target.m_capacity );
@@ -28,6 +28,7 @@ namespace Rumia
             {
                 m_elements[ index ] = target.m_elements[ index ];
             }
+            m_size = target.m_size;
         }
 
         Array( Array&& target ) :
