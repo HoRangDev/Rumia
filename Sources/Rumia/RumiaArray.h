@@ -67,7 +67,8 @@ namespace Rumia
         // copy operator
         Array& operator=( const Array& target )
         {
-            RUMIA_DELETE_ARRAY( m_allocator, m_elements );
+            // Clear First
+            Clear( );
 
             // Change allocator
             m_allocator = target.m_allocator;
