@@ -32,13 +32,11 @@ namespace Rumia
         }
 
         Array( Array&& target ) :
-            m_allocator( std::move( target.m_allocator ) )
+            m_allocator( target.m_allocator ),
+            m_elements( target.m_elements ),
+            m_capacity( target.m_capacity ),
+            m_size( target.m_size )
         {
-            // Move element array
-            m_elements = target.m_elements;
-            m_capacity = target.m_capacity;
-            m_size = target.m_size;
-
             target.m_elements = nullptr;
             target.m_capacity = 0;
             target.m_size = 0;
@@ -67,21 +65,21 @@ namespace Rumia
         // copy operator
         Array& operator=( const Array& target )
         {
-            // Clear First
-            Clear( );
-
-            // Change allocator
-            m_allocator = target.m_allocator;
-
-            // Reserve Memory space
-            Reserve( target.m_capacity );
-
-            // Copy elements
-            for ( size_t index = 0; index < target.m_size; ++index )
+            if ( this != &target )
             {
-                m_elements[ index ] = target.m_elements[ index ];
+                // Clear First
+                Clear( );
+
+                // Reserve Memory space
+                Reserve( target.m_capacity );
+
+                // Copy elements
+                for ( size_t index = 0; index < target.m_size; ++index )
+                {
+                    m_elements[ index ] = target.m_elements[ index ];
+                }
+                m_size = target.m_size;
             }
-            m_size = target.m_size;
 
             return ( *this );
         }
@@ -89,19 +87,20 @@ namespace Rumia
         // move operator
         Array& operator=( Array&& target )
         {
-            RUMIA_DELETE_ARRAY( m_allocator, m_elements );
+            if ( this != &target )
+            {
+                assert( &m_allocator == &target.m_allocator );
+                Clear( );
 
-            // Change allocator
-            m_allocator = std::move( target.m_allocator );
+                // Move element array
+                m_elements = target.m_elements;
+                m_capacity = target.m_capacity;
+                m_size = target.m_size;
 
-            // Move element array
-            m_elements = target.m_elements;
-            m_capacity = target.m_capacity;
-            m_size = target.m_size;
-
-            target.m_elements = nullptr;
-            target.m_capacity = 0;
-            target.m_size = 0;
+                target.m_elements = nullptr;
+                target.m_capacity = 0;
+                target.m_size = 0;
+            }
 
             return ( *this );
         }

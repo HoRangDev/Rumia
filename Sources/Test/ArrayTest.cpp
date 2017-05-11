@@ -3,7 +3,8 @@
 
 ArrayTest::ArrayTest( ) :
     allocator( Rumia::DefaultAllocator( ) ),
-    arr( Rumia::Array<int>( allocator ) )
+    arr( Rumia::Array<int>( allocator ) ),
+    objArr( Rumia::Array<SomeClass>( allocator ) )
 {
 }
 
@@ -22,6 +23,7 @@ void ArrayTest::SetUp( )
 void ArrayTest::TearDown( )
 {
     arr.Clear( );
+    objArr.Clear( );
 }
 
 TEST_F( ArrayTest, Reserve )
@@ -120,7 +122,7 @@ TEST_F( ArrayTest, Clear )
 
 TEST_F( ArrayTest, Copy )
 {
-    Rumia::Array<int> copyConstructorObj( arr );
+    Rumia::Array<int> copyConstructorObj{ arr };
     EXPECT_EQ( copyConstructorObj.Pop( ), 4 );
     EXPECT_EQ( copyConstructorObj.Pop( ), 3 );
     EXPECT_EQ( copyConstructorObj.Pop( ), 2 );
@@ -129,11 +131,12 @@ TEST_F( ArrayTest, Copy )
     // arr and copyConstructorObj is not a same object!
     EXPECT_EQ( arr.Pop( ), 4);
 
-    copyConstructorObj = arr;
-    EXPECT_EQ( copyConstructorObj.Pop( ), 3 );
-    EXPECT_EQ( copyConstructorObj.Pop( ), 2 );
-    EXPECT_EQ( copyConstructorObj.Pop( ), 1 );
-    EXPECT_TRUE( copyConstructorObj.IsEmpty( ) );
+    Rumia::Array<int> anotherCopy{ allocator };
+    anotherCopy = arr;
+    EXPECT_EQ( anotherCopy.Pop( ), 3 );
+    EXPECT_EQ( anotherCopy.Pop( ), 2 );
+    EXPECT_EQ( anotherCopy.Pop( ), 1 );
+    EXPECT_TRUE( anotherCopy.IsEmpty( ) );
 }
 
 TEST_F( ArrayTest, Move )
@@ -143,12 +146,23 @@ TEST_F( ArrayTest, Move )
     EXPECT_EQ( movedObj.Pop( ), 4 );
     EXPECT_EQ( movedObj.Pop( ), 3 );
 
-    Rumia::Array<int> anotherMovedObj{ Rumia::DefaultAllocator( ) };
+    Rumia::Array<int> anotherMovedObj{ allocator };
     EXPECT_TRUE( anotherMovedObj.IsEmpty( ) );
     anotherMovedObj = std::move( movedObj );
     EXPECT_FALSE( anotherMovedObj.IsEmpty( ) );
     EXPECT_TRUE( movedObj.IsEmpty( ) );
     EXPECT_EQ( anotherMovedObj.Pop( ), 2 );
     EXPECT_EQ( anotherMovedObj.Pop( ), 1 );
+}
+
+TEST_F( ArrayTest, ObjectMove )
+{
+    SomeClass obj{ 30 };
+    objArr.Push( obj );
+    EXPECT_EQ( objArr.Pop( ).m_data, 30 );
+    EXPECT_EQ( obj.m_data, 30 );
+    objArr.Push( std::move( obj ) );
+    EXPECT_EQ( objArr.Pop( ).m_data, 30 );
+    EXPECT_EQ( obj.m_data, -1 );
 }
 #endif

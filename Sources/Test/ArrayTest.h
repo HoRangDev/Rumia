@@ -2,6 +2,7 @@
 #ifdef __TEST__
 #include "gtest\gtest.h"
 #include "RumiaArray.h"
+#include "SomeClass.h"
 
 class ArrayTest : public testing::Test
 {
@@ -15,6 +16,7 @@ public:
 public:
     Rumia::DefaultAllocator allocator;
     Rumia::Array<int> arr;
+    Rumia::Array<SomeClass> objArr;
 
 };
 
