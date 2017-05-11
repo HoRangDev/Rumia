@@ -165,4 +165,13 @@ TEST_F( ArrayTest, ObjectMove )
     EXPECT_EQ( objArr.Pop( ).m_data, 30 );
     EXPECT_EQ( obj.m_data, -1 );
 }
+
+TEST_F( ArrayTest, IndexOf )
+{
+    EXPECT_EQ( arr.IndexOf( 1 ), 0 );
+    EXPECT_EQ( arr.IndexOf( 2 ), 1 );
+    EXPECT_EQ( arr.IndexOf( 3 ), 2 );
+    EXPECT_EQ( arr.IndexOf( 4 ), 3 );
+    EXPECT_EQ( arr.IndexOf( 9999 ), arr.GetSize( ) );
+}
 #endif

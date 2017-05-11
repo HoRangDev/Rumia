@@ -198,6 +198,21 @@ namespace Rumia
             return m_elements[ index ];
         }
 
+        // When method didn't find out passed element, it'll be return size of array.
+        template <typename Ty>
+        size_t IndexOf( Ty&& element ) const
+        {
+            for ( size_t index = 0; index < m_size; ++index )
+            {
+                if ( m_elements[ index ] == element )
+                {
+                    return index;
+                }
+            }
+
+            return m_size;
+        }
+
         void Clear( bool resetReserve = true )
         {
             if ( resetReserve )
