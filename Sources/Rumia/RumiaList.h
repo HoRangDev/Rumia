@@ -63,6 +63,33 @@ namespace Rumia
             Clear( );
         }
 
+        List& operator=( const List& rhs )
+        {
+            // Clear List first
+            Clear( );
+            m_count = rhs.m_count;
+
+            if ( rhs.m_root != nullptr )
+            {
+                CopyFrom( rhs.m_root );
+            }
+
+            return ( *this );
+        }
+
+        List& operator=( List&& rhs )
+        {
+            assert( &m_allocator == &rhs.m_allocator );
+            Clear( );
+            m_count = rhs.m_count;
+            m_root = rhs.m_root;
+
+            rhs.m_count = 0;
+            rhs.m_root = nullptr;
+
+            return ( *this );
+        }
+
         template <typename Ty>
         void PushFront( Ty&& element )
         {
