@@ -40,22 +40,21 @@ namespace Rumia
         }
 
         List( const List& target ) :
-            m_allocator( target.m_allocator ),
-            m_root( nullptr ),
-            m_count( 0 )
+            List( target.m_allocator )
         {
             Clear( );
             CopyFrom( target.m_root );
         }
 
         List( List&& target ) :
-            m_allocator( target.m_allocator ),
-            m_root( nullptr ),
-            m_count( 0 )
+            List( target.m_allocator )
         {
             Clear( );
             m_root = target.m_root;
             target.m_root = nullptr;
+
+            m_count = target.m_count;
+            target.m_count = 0;
         }
 
         virtual ~List( )
