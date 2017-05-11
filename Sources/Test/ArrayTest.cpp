@@ -174,4 +174,23 @@ TEST_F( ArrayTest, IndexOf )
     EXPECT_EQ( arr.IndexOf( 4 ), 3 );
     EXPECT_EQ( arr.IndexOf( 9999 ), arr.GetSize( ) );
 }
+
+TEST_F( ArrayTest, EraseAt )
+{
+    arr.EraseAt( 1 );
+    EXPECT_EQ( arr.GetSize( ), 3 );
+    EXPECT_EQ( arr.At( 1 ), 3 );
+    EXPECT_EQ( arr.At( 2 ), 4 );
+}
+
+TEST_F( ArrayTest, Erase )
+{
+    arr.Erase( 2 );
+    EXPECT_EQ( arr.GetSize( ), 3 );
+    EXPECT_EQ( arr.At( 1 ), 3 );
+    EXPECT_EQ( arr.At( 2 ), 4 );
+    EXPECT_EQ( arr.IndexOf( 2 ), arr.GetSize( ) );
+    arr.Erase( 999 );
+    EXPECT_EQ( arr.GetSize( ), 3 );
+}
 #endif

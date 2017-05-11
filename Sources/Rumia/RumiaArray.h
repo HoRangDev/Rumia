@@ -213,6 +213,28 @@ namespace Rumia
             return m_size;
         }
 
+        template <typename Ty>
+        void Erase( Ty&& element )
+        {
+            size_t foundIndex = IndexOf( std::forward<Ty>( element ) );
+            if ( foundIndex != m_size )
+            {
+                EraseAt( foundIndex  );
+            }
+        }
+
+        void EraseAt( size_t index )
+        {
+            assert( !IsOutOfRange( index ) );
+            m_elements[ index ].~T( );
+            --m_size;
+
+            for ( size_t itrIndex = index; itrIndex < m_size; ++itrIndex )
+            {
+                m_elements[ itrIndex ] = std::move( m_elements[ itrIndex + 1 ] );
+            }
+        }
+
         void Clear( bool resetReserve = true )
         {
             if ( resetReserve )
