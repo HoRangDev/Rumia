@@ -49,7 +49,7 @@ namespace Rumia
         }
 
         List( List&& target ) :
-            m_allocator( std::move( target.m_allocator ) ),
+            m_allocator( target.m_allocator ),
             m_root( nullptr ),
             m_count( 0 )
         {
@@ -145,6 +145,7 @@ namespace Rumia
                 node = nextNode;
             }
 
+            m_count = 0;
             m_root = nullptr;
         }
 
