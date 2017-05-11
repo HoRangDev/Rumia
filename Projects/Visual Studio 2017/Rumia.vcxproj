@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Rumia\DefaultAllocator.h" />
-    <ClInclude Include="..\..\Sources\Rumia\RumiaAllocator.h" />
-    <ClInclude Include="..\..\Sources\Rumia\RumiaArray.h" />
-    <ClInclude Include="..\..\Sources\Rumia\RumiaIterator.h" />
-    <ClInclude Include="..\..\Sources\Rumia\RumiaList.h" />
+    <ClInclude Include="..\..\Sources\Rumia\Allocator.h" />
+    <ClInclude Include="..\..\Sources\Rumia\Array.h" />
+    <ClInclude Include="..\..\Sources\Rumia\Iterator.h" />
+    <ClInclude Include="..\..\Sources\Rumia\List.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Rumia\Rumia.cpp" />

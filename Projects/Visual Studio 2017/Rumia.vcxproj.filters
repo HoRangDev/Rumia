@@ -6,19 +6,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Sources\Rumia\RumiaAllocator.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Rumia\RumiaArray.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Rumia\DefaultAllocator.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Rumia\RumiaIterator.h">
+    <ClInclude Include="..\..\Sources\Rumia\List.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Rumia\RumiaList.h">
+    <ClInclude Include="..\..\Sources\Rumia\Iterator.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Rumia\Array.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Rumia\Allocator.h">
       <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>

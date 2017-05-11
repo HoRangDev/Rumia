@@ -1,5 +1,5 @@
 #pragma once
-#include "RumiaAllocator.h"
+#include "Allocator.h"
 
 namespace Rumia
 {

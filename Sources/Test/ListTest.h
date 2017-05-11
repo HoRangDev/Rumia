@@ -1,7 +1,7 @@
 #pragma once
 #ifdef __TEST__
 #include "gtest\gtest.h"
-#include "RumiaList.h"
+#include "Rumia\List.h"
 
 class ListTest : public testing::Test
 {
