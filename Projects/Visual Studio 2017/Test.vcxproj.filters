@@ -24,6 +24,9 @@
     <ClCompile Include="..\..\Sources\Test\ListTest.cpp">
       <Filter>Sources\Tests\List</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ForwardListTest.cpp">
+      <Filter>Sources\Tests\List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
@@ -34,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\SomeClass.h">
       <Filter>Sources\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ForwardListTest.h">
+      <Filter>Sources\Tests\List</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

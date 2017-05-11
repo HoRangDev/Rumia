@@ -22,6 +22,7 @@
     <ClInclude Include="..\..\Sources\Rumia\DefaultAllocator.h" />
     <ClInclude Include="..\..\Sources\Rumia\Allocator.h" />
     <ClInclude Include="..\..\Sources\Rumia\Array.h" />
+    <ClInclude Include="..\..\Sources\Rumia\ForwardList.h" />
     <ClInclude Include="..\..\Sources\Rumia\Iterator.h" />
     <ClInclude Include="..\..\Sources\Rumia\List.h" />
   </ItemGroup>
