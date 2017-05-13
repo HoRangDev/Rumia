@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\Sources\Test\ForwardListTest.cpp">
       <Filter>Sources\Tests\List</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ArrayItrTest.cpp">
+      <Filter>Sources\Tests\Iterator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
@@ -43,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ForwardListTest.h">
       <Filter>Sources\Tests\List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ArrayItrTest.h">
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
