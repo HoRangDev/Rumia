@@ -8,6 +8,8 @@ namespace Rumia
     class Iterator
     {
     public:
+        virtual ~Iterator( ) { }
+
         virtual Iterator& operator++( ) = 0;
         virtual Iterator& operator--( ) = 0;
         virtual T& operator*( ) = 0;

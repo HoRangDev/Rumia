@@ -13,6 +13,9 @@
     <Filter Include="Sources\Tests\List">
       <UniqueIdentifier>{a5b03ec2-0a6a-4ad9-903c-c6e5e6ee0bcf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tests\Iterator">
+      <UniqueIdentifier>{cc53b0dc-d817-442e-9d2f-c012cc58f237}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\main.cpp">

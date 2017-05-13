@@ -1,6 +1,7 @@
 #pragma once
 #include <type_traits>
 #include "DefaultAllocator.h"
+#include "Iterator.h"
 
 namespace Rumia
 {
@@ -9,6 +10,57 @@ namespace Rumia
         typename IsChlidOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>::type>
         class Array
     {
+    public:
+        class iterator : public Rumia::Iterator<T>
+        {
+        public:
+            iterator( Array& container, size_t index ) :
+                m_container( container ), m_position( index )
+            {
+            }
+
+            ~iterator( ) { }
+
+            virtual iterator& operator++( ) override
+            {
+                ++m_position;
+                return ( *this );
+            }
+
+            virtual iterator& operator--( ) override
+            {
+                --m_position;
+                return ( *this );
+            }
+
+            virtual T& operator*( ) override
+            {
+                return m_container[ m_position ];
+            }
+
+            virtual T& operator*( ) const override
+            {
+                return m_container[ m_position ];
+            }
+
+            virtual bool operator==( const iterator& rhs ) const override
+            {
+                return ( &m_container == &rhs.m_container ) &&
+                    ( m_position == rhs.m_position );
+            }
+
+            virtual bool operator!=( const iterator& rhs ) const override
+            {
+                return ( &m_container != &rhs.m_container ) ||
+                    ( m_position != rhs.m_position );
+            }
+
+        private:
+            Array& m_container;
+            size_t m_position;
+
+        };
+
     public:
         Array( TAllocator& allocator, size_t initCapacity = 2 ) :
             m_allocator( allocator ),
@@ -247,6 +299,16 @@ namespace Rumia
             {
                 m_size = 0;
             }
+        }
+
+        iterator Begin( ) const
+        {
+            return iterator( ( *this ), 0 );
+        }
+
+        iterator End( ) const
+        {
+            return iterator( ( *this ), m_size - 1 );
         }
 
         inline size_t GetCapacity( ) const { return m_capacity; }
