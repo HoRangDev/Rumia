@@ -15,8 +15,5 @@ namespace Rumia
         virtual T& operator*( ) = 0;
         virtual T& operator*( ) const = 0;
 
-        virtual bool operator==( const Iterator& rhs ) const = 0;
-        virtual bool operator!=( const Iterator& rhs ) const = 0;
-
     };
 }

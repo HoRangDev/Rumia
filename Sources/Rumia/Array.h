@@ -21,13 +21,13 @@ namespace Rumia
 
             ~iterator( ) { }
 
-            virtual iterator& operator++( ) override
+            virtual Iterator<T>& operator++( ) override
             {
                 ++m_position;
                 return ( *this );
             }
 
-            virtual iterator& operator--( ) override
+            virtual Iterator<T>& operator--( ) override
             {
                 --m_position;
                 return ( *this );
@@ -43,13 +43,13 @@ namespace Rumia
                 return m_container[ m_position ];
             }
 
-            virtual bool operator==( const iterator& rhs ) const override
+            virtual bool operator==( const iterator& rhs ) const
             {
                 return ( &m_container == &rhs.m_container ) &&
                     ( m_position == rhs.m_position );
             }
 
-            virtual bool operator!=( const iterator& rhs ) const override
+            virtual bool operator!=( const iterator& rhs ) const
             {
                 return ( &m_container != &rhs.m_container ) ||
                     ( m_position != rhs.m_position );
@@ -301,14 +301,15 @@ namespace Rumia
             }
         }
 
-        iterator Begin( ) const
+        iterator Begin( )
         {
             return iterator( ( *this ), 0 );
         }
 
-        iterator End( ) const
+        iterator End( )
         {
-            return iterator( ( *this ), m_size - 1 );
+            // Dummy iterator
+            return iterator( ( *this ), m_size );
         }
 
         inline size_t GetCapacity( ) const { return m_capacity; }
