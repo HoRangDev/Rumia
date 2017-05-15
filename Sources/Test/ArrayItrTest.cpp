@@ -14,9 +14,14 @@ void ArrayItrTest::TearDown( )
 
 TEST_F( ArrayItrTest, RoundTest )
 {
-    int count = 1;
+    int count = 0;
     for ( auto itr = arr.Begin( ); itr != arr.End( ); ++itr )
     {
-        EXPECT_EQ( ( *itr ), count++ );
+        EXPECT_EQ( ( *itr ), ++count );
+    }
+
+    for ( auto itr = arr.RBegin( ); itr != arr.REnd( ); ++itr )
+    {
+        EXPECT_EQ( ( *itr ), count-- );
     }
 }

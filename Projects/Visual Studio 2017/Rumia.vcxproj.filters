@@ -24,6 +24,9 @@
     <ClInclude Include="..\..\Sources\Rumia\ForwardList.h">
       <Filter>Sources</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Rumia\ReverseIterator.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Rumia\Rumia.cpp">
