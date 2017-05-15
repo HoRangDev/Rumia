@@ -1,6 +1,8 @@
 #pragma once
 #include <type_traits>
 #include "DefaultAllocator.h"
+#include "Iterator.h"
+#include "ReverseIterator.h"
 
 namespace Rumia
 {
@@ -30,6 +32,60 @@ namespace Rumia
             Node<Ty>* m_next;
 
         };
+
+    public:
+        class iterator : public Rumia::Iterator<T, List>
+        {
+        public:
+            iterator( ContainerType& container, Node<T>* currentNode ) :
+                Iterator<T, List>( container ), m_currentNode( currentNode )
+            {
+            }
+
+            ~iterator( ) { }
+
+            iterator& operator++( )
+            {
+                assert( m_currentNode != nullptr );
+                m_currentNode = m_currentNode->m_next;
+                return ( *this );
+            }
+
+            iterator& operator--( )
+            {
+                assert( m_currentNode != nullptr );
+                m_currentNode = m_currentNode->m_prev;
+                return ( *this );
+            }
+
+            T& operator*( )
+            {
+                return ( m_currentNode->m_data );
+            }
+
+            T& operator*( ) const
+            {
+                return ( m_currentNode->m_data );
+            }
+
+            bool operator==( const iterator& rhs ) const
+            {
+                return ( m_container == rhs.m_container ) &&
+                    ( m_currentNode == rhs.m_currentNode );
+            }
+
+            bool operator!=( const iterator& rhs ) const
+            {
+                return ( &m_container != &rhs.m_container ) ||
+                    ( m_currentNode != rhs.m_currentNode );
+            }
+
+        private:
+            Node<T>* m_currentNode;
+
+        };
+
+        using reverse_iterator = ReverseIterator<T, iterator>;
 
     public:
         List( TAllocator& allocator ) :
@@ -173,6 +229,36 @@ namespace Rumia
 
             m_count = 0;
             m_root = nullptr;
+        }
+
+        iterator begin( bool bIsDummy = false )
+        {
+            if ( bIsDummy )
+            {
+                return iterator( ( *this ), nullptr );
+            }
+
+            return iterator( ( *this ), m_root );
+        }
+
+        iterator end( bool bIsDummy = true )
+        {
+            if ( bIsDummy )
+            {
+                return iterator( ( *this ), nullptr );
+            }
+
+            return iterator( ( *this ), GetMostLastNode( ) );
+        }
+
+        reverse_iterator rbegin( bool bIsDummy = false )
+        {
+            return reverse_iterator( end( bIsDummy ) );
+        }
+
+        reverse_iterator rend( bool bIsDummy = true )
+        {
+            return reverse_iterator( begin( bIsDummy ) );
         }
 
         inline bool IsEmpty( ) const { return ( m_root == nullptr ); }

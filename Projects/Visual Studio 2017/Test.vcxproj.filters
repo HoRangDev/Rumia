@@ -33,6 +33,9 @@
     <ClCompile Include="..\..\Sources\Test\ArrayItrTest.cpp">
       <Filter>Sources\Tests\Iterator</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ListItrTest.cpp">
+      <Filter>Sources\Tests\Iterator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
@@ -48,6 +51,9 @@
       <Filter>Sources\Tests\List</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ArrayItrTest.h">
+      <Filter>Sources\Tests\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ListItrTest.h">
       <Filter>Sources\Tests\Iterator</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,9 +12,6 @@
     <ClInclude Include="..\..\Sources\Rumia\List.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Rumia\Iterator.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Rumia\Array.h">
       <Filter>Sources</Filter>
     </ClInclude>
@@ -25,6 +22,9 @@
       <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Rumia\ReverseIterator.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Rumia\Iterator.h">
       <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>

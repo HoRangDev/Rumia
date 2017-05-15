@@ -8,6 +8,7 @@ namespace Rumia
         typename IsChildOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>>
     class ForwardList
     {
+
     protected:
         template <typename Ty>
         struct Node
