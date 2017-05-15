@@ -12,17 +12,17 @@ namespace Rumia
         class Array
     {
     public:
-        class iterator : public Rumia::Iterator<T>
+        class iterator : public Rumia::Iterator<T, Array>
         {
         public:
-            iterator( Array& container, size_t index, bool bIsDummy = false ) :
-                m_container( container ), m_position( index ), m_bIsDummy( bIsDummy )
+            iterator( ContainerType& container, size_t index, bool bIsDummy = false ) :
+                Iterator<T, Array>(container), m_position( index ), m_bIsDummy( bIsDummy )
             {
             }
 
             ~iterator( ) { }
 
-            virtual Iterator<T>& operator++( ) override
+            iterator& operator++( )
             {
                 if ( m_position == ( m_container.GetSize( ) - 1 ) && !m_bIsDummy )
                 {
@@ -36,7 +36,7 @@ namespace Rumia
                 return ( *this );
             }
 
-            virtual Iterator<T>& operator--( ) override
+            iterator& operator--( )
             {
                 if ( m_position == 0 && !m_bIsDummy )
                 {
@@ -100,12 +100,12 @@ namespace Rumia
             }
 
         private:
-            Array& m_container;
             size_t m_position;
 
             bool m_bIsDummy;
 
         };
+
         using reverse_iterator = ReverseIterator<T, iterator>;
 
     public:
@@ -358,25 +358,24 @@ namespace Rumia
             }
         }
 
-        iterator Begin( bool bIsDummy = false )
+        iterator begin( bool bIsDummy = false )
         {
             return iterator( ( *this ), 0, bIsDummy );
         }
 
-        iterator End( bool bIsDummy = true )
+        iterator end( bool bIsDummy = true )
         {
-            // Dummy iterator
             return iterator( ( *this ), m_size - 1, bIsDummy );
         }
 
-        reverse_iterator RBegin( )
+        reverse_iterator rbegin( bool bIsDummy = false )
         {
-            return reverse_iterator( End( false ) );
+            return reverse_iterator( end( bIsDummy ) );
         }
 
-        reverse_iterator REnd( )
+        reverse_iterator rend( bool bIsDummy = true )
         {
-            return reverse_iterator( Begin( true ) );
+            return reverse_iterator( begin( bIsDummy ) );
         }
 
         inline size_t GetCapacity( ) const { return m_capacity; }
