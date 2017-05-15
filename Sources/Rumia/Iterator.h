@@ -1,19 +1,26 @@
 #pragma once
-#include <vector>
 
 namespace Rumia
 {
-    /* Container Iterator Interface **/
-    template <typename T>
+    template<typename Ty, typename ContainerTy>
     class Iterator
     {
     public:
+        using DataType = Ty;
+        using ContainerType = ContainerTy;
+
+    public:
+        Iterator( ContainerType& container ) : m_container( container )
+        {
+        }
+
         virtual ~Iterator( ) { }
 
-        virtual Iterator& operator++( ) = 0;
-        virtual Iterator& operator--( ) = 0;
-        virtual T& operator*( ) = 0;
-        virtual T& operator*( ) const = 0;
+        virtual Ty& operator*( ) = 0;
+        virtual Ty& operator*( ) const = 0;
+
+    protected:
+        ContainerType& m_container;
 
     };
 }
