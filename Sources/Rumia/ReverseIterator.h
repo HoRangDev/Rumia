@@ -4,8 +4,7 @@
 
 namespace Rumia
 {
-    template <typename Ty, typename ItrTy,
-    typename IsChildOf = std::enable_if<std::is_base_of<Iterator<Ty>, ItrTy>::value>>
+    template <typename Ty, typename ItrTy>
     class ReverseIterator
     {
     public:
