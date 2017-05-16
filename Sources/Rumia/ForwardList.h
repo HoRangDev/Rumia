@@ -1,6 +1,7 @@
 #pragma once
 #include <type_traits>
 #include "DefaultAllocator.h"
+#include "Iterator.h"
 
 namespace Rumia
 {
@@ -8,7 +9,6 @@ namespace Rumia
         typename IsChildOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>>
     class ForwardList
     {
-
     protected:
         template <typename Ty>
         struct Node
@@ -27,6 +27,51 @@ namespace Rumia
         public:
             Ty m_data;
             Node<Ty>* m_next;
+
+        };
+
+    public:
+        class iterator : public Rumia::Iterator<T, ForwardList>
+        {
+        public:
+            iterator( ContainerType& container, Node<T>* currentNode ) :
+                Iterator<T, ForwardList>( container ), m_currentNode( currentNode )
+            {
+            }
+
+            ~iterator( ) { }
+
+            iterator& operator++( )
+            {
+                assert( m_currentNode != nullptr );
+                m_currentNode = m_currentNode->m_next;
+                return ( *this );
+            }
+
+            T& operator*( ) override
+            {
+                return ( m_currentNode->m_data );
+            }
+
+            T& operator*( ) const override
+            {
+                return ( m_currentNode->m_data );
+            }
+
+            bool operator==( const iterator& rhs ) const
+            {
+                return ( &m_container == &rhs.m_container ) &&
+                    ( m_currentNode = rhs.m_currentNode );
+            }
+
+            bool operator!=( const iterator& rhs ) const
+            {
+                return ( &m_container != &rhs.m_container ) ||
+                    ( m_currentNode != rhs.m_currentNode );
+            }
+
+        private:
+            Node<T>* m_currentNode;
 
         };
 
@@ -115,6 +160,16 @@ namespace Rumia
             }
 
             m_count = 0;
+        }
+
+        iterator begin( )
+        {
+            return iterator( ( *this ), m_root );
+        }
+
+        iterator end( )
+        {
+            return iterator( ( *this ), nullptr );
         }
 
         inline bool IsEmpty( ) const { return m_root == nullptr; }

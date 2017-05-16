@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\ArrayItrTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp" />
+    <ClCompile Include="..\..\Sources\Test\ForwardListItrTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ForwardListTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ListItrTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ListTest.cpp" />
@@ -37,6 +38,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayItrTest.h" />
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h" />
+    <ClInclude Include="..\..\Sources\Test\ForwardListItrTest.h" />
     <ClInclude Include="..\..\Sources\Test\ForwardListTest.h" />
     <ClInclude Include="..\..\Sources\Test\ListItrTest.h" />
     <ClInclude Include="..\..\Sources\Test\ListTest.h" />
