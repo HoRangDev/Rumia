@@ -58,19 +58,19 @@ namespace Rumia
                 return ( *this );
             }
 
-            T& operator*( )
+            T& operator*( ) override
             {
                 return ( m_currentNode->m_data );
             }
 
-            T& operator*( ) const
+            T& operator*( ) const override
             {
                 return ( m_currentNode->m_data );
             }
 
             bool operator==( const iterator& rhs ) const
             {
-                return ( m_container == rhs.m_container ) &&
+                return ( &m_container == &rhs.m_container ) &&
                     ( m_currentNode == rhs.m_currentNode );
             }
 
