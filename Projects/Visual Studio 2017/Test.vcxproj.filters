@@ -16,6 +16,9 @@
     <Filter Include="Sources\Tests\Iterator">
       <UniqueIdentifier>{cc53b0dc-d817-442e-9d2f-c012cc58f237}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tests\Tuple">
+      <UniqueIdentifier>{a72eb7c2-bdab-47ad-b382-ca9a8b65be6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\main.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="..\..\Sources\Test\ForwardListItrTest.cpp">
       <Filter>Sources\Tests\Iterator</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\TupleTest.cpp">
+      <Filter>Sources\Tests\Tuple</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ForwardListItrTest.h">
       <Filter>Sources\Tests\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\TupleTest.h">
+      <Filter>Sources\Tests\Tuple</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

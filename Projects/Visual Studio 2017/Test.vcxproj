@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\Sources\Test\ListItrTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ListTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\main.cpp" />
+    <ClCompile Include="..\..\Sources\Test\TupleTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayItrTest.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="..\..\Sources\Test\ListItrTest.h" />
     <ClInclude Include="..\..\Sources\Test\ListTest.h" />
     <ClInclude Include="..\..\Sources\Test\SomeClass.h" />
+    <ClInclude Include="..\..\Sources\Test\TupleTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
