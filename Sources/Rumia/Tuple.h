@@ -53,4 +53,11 @@ namespace Rumia
     {
         return GetImpl<index, Ty, Rest...>::value( tuple );
     }
+
+    template <typename Ty, typename... Rest>
+    Rumia::Tuple<Ty, Rest...> MakeTuple( Ty data, Rest... rest )
+    {
+        return Rumia::Tuple<Ty, Rest...>( data, rest... );
+    }
+
 }
