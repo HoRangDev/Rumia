@@ -28,30 +28,33 @@ namespace Rumia
 
     };
 
-    template <int index, typename Ty, typename... Rest>
-    class GetImpl
+    namespace _Impl
     {
-    public:
-        static decltype( auto ) value( const Tuple<Ty, Rest...>& tuple )
+        template <int index, typename Ty, typename... Rest>
+        class GetImpl
         {
-            return GetImpl< index - 1, Rest...>::value( tuple );
-        }
-    };
+        public:
+            static decltype( auto ) value( const Tuple<Ty, Rest...>& tuple )
+            {
+                return GetImpl< index - 1, Rest...>::value( tuple );
+            }
+        };
 
-    template <typename Ty, typename... Rest>
-    class GetImpl<0, Ty, Rest...>
-    {
-    public:
-        static Ty value( const Tuple<Ty, Rest...>& tuple )
+        template <typename Ty, typename... Rest>
+        class GetImpl<0, Ty, Rest...>
         {
-            return tuple.m_data;
-        }
-    };
+        public:
+            static Ty value( const Tuple<Ty, Rest...>& tuple )
+            {
+                return tuple.m_data;
+            }
+        };
+    }
 
     template <int index, typename Ty, typename... Rest>
     decltype( auto ) Get( const Tuple<Ty, Rest...>& tuple )
     {
-        return GetImpl<index, Ty, Rest...>::value( tuple );
+        return _Impl::GetImpl<index, Ty, Rest...>::value( tuple );
     }
 
     template <typename Ty, typename... Rest>
