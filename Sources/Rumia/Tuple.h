@@ -32,7 +32,7 @@ namespace Rumia
     class GetImpl
     {
     public:
-        static decltype( auto ) value( const Tuple<Ty, Rest...>* tuple )
+        static decltype( auto ) value( const Tuple<Ty, Rest...>& tuple )
         {
             return GetImpl< index - 1, Rest...>::value( tuple );
         }
@@ -42,15 +42,15 @@ namespace Rumia
     class GetImpl<0, Ty, Rest...>
     {
     public:
-        static Ty value( const Tuple<Ty, Rest...>* tuple )
+        static Ty value( const Tuple<Ty, Rest...>& tuple )
         {
-            return tuple->m_data;
+            return tuple.m_data;
         }
     };
 
     template <int index, typename Ty, typename... Rest>
     decltype( auto ) Get( const Tuple<Ty, Rest...>& tuple )
     {
-        return GetImpl<index, Ty, Rest...>::value( &tuple );
+        return GetImpl<index, Ty, Rest...>::value( tuple );
     }
 }
