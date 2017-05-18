@@ -6,7 +6,10 @@ namespace Rumia
     class Tuple : public Tuple<Rest...>
     {
     public:
-        Tuple( Ty data, Rest... rest ) : Tuple<Rest...>( rest... ), m_data( data )
+        template <typename _Ty>
+        Tuple( _Ty&& data, Rest... rest ) : 
+            Tuple<Rest...>( rest... ), 
+            m_data( std::forward<_Ty>( data ) )
         {
         }
 
@@ -19,7 +22,9 @@ namespace Rumia
     class Tuple<Ty>
     {
     public:
-        Tuple( Ty data ) : m_data( data )
+        template <typename _Ty>
+        Tuple( _Ty&& data ) :
+            m_data( std::forward<_Ty>( data ) )
         {
         }
 
@@ -27,11 +32,20 @@ namespace Rumia
         Ty m_data;
 
     };
+}
+
+namespace Rumia
+{
+    template <typename Ty, typename... Rest>
+    Rumia::Tuple<Ty, Rest...> MakeTuple( Ty&& data, Rest... rest )
+    {
+        return Rumia::Tuple<Ty, Rest...>( std::forward<Ty>( data ), rest... );
+    }
 
     namespace _Impl
     {
-        template <int index, typename Ty, typename... Rest>
-        class GetImpl
+        template <size_t index, typename Ty, typename... Rest>
+        struct GetImpl
         {
         public:
             static decltype( auto ) value( const Tuple<Ty, Rest...>& tuple )
@@ -41,7 +55,7 @@ namespace Rumia
         };
 
         template <typename Ty, typename... Rest>
-        class GetImpl<0, Ty, Rest...>
+        struct GetImpl<0, Ty, Rest...>
         {
         public:
             static Ty value( const Tuple<Ty, Rest...>& tuple )
@@ -51,16 +65,10 @@ namespace Rumia
         };
     }
 
-    template <int index, typename Ty, typename... Rest>
+    template <size_t index, typename Ty, typename... Rest>
     decltype( auto ) Get( const Tuple<Ty, Rest...>& tuple )
     {
         return _Impl::GetImpl<index, Ty, Rest...>::value( tuple );
-    }
-
-    template <typename Ty, typename... Rest>
-    Rumia::Tuple<Ty, Rest...> MakeTuple( Ty data, Rest... rest )
-    {
-        return Rumia::Tuple<Ty, Rest...>( data, rest... );
     }
 
     template <typename Tuple>
@@ -71,5 +79,4 @@ namespace Rumia
     {
         const static size_t value = sizeof...( Types );
     };
-
 }
