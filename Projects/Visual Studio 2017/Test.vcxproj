@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\Sources\Test\ListItrTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ListTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\main.cpp" />
+    <ClCompile Include="..\..\Sources\Test\PairTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\TupleTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +44,7 @@
     <ClInclude Include="..\..\Sources\Test\ForwardListTest.h" />
     <ClInclude Include="..\..\Sources\Test\ListItrTest.h" />
     <ClInclude Include="..\..\Sources\Test\ListTest.h" />
+    <ClInclude Include="..\..\Sources\Test\PairTest.h" />
     <ClInclude Include="..\..\Sources\Test\SomeClass.h" />
     <ClInclude Include="..\..\Sources\Test\TupleTest.h" />
   </ItemGroup>

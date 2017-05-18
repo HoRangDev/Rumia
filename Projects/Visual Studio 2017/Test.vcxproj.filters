@@ -45,6 +45,7 @@
     <ClCompile Include="..\..\Sources\Test\TupleTest.cpp">
       <Filter>Sources\Tests\Tuple</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\PairTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
@@ -69,6 +70,9 @@
       <Filter>Sources\Tests\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\TupleTest.h">
+      <Filter>Sources\Tests\Tuple</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\PairTest.h">
       <Filter>Sources\Tests\Tuple</Filter>
     </ClInclude>
   </ItemGroup>
