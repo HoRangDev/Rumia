@@ -63,4 +63,13 @@ namespace Rumia
         return Rumia::Tuple<Ty, Rest...>( data, rest... );
     }
 
+    template <typename Tuple>
+    struct TupleSize;
+
+    template <typename... Types>
+    struct TupleSize<Tuple<Types...>>
+    {
+        const static size_t value = sizeof...( Types );
+    };
+
 }
