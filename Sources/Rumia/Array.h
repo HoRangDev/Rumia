@@ -15,6 +15,7 @@ namespace Rumia
         class iterator : public Rumia::Iterator<T, Array>
         {
         public:
+            friend Array;
             iterator( ContainerType& container, size_t index, bool bIsDummy = false ) :
                 Rumia::Iterator<T, Array>( container ), m_position( index ), m_bIsDummy( bIsDummy )
             {
@@ -109,6 +110,7 @@ namespace Rumia
         class const_iterator : public Rumia::Iterator<T, const Array>
         {
         public:
+            friend Array;
             const_iterator( ContainerType& container, size_t index, bool bIsDummy = false ) :
                 Rumia::Iterator<T, const Array>( container ), m_position( index ), m_bIsDummy( bIsDummy )
             {

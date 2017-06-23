@@ -192,6 +192,12 @@ TEST_F( ArrayTest, Erase )
     EXPECT_EQ( arr.IndexOf( 2 ), arr.GetSize( ) );
     arr.Erase( 999 );
     EXPECT_EQ( arr.GetSize( ), 3 );
+
+    arr.Clear( );
+    arr.Push( 1 );
+    arr.Push( 2 );
+    arr.Erase( arr.begin( ) );
+    EXPECT_EQ( 2, arr.At( 0 ) );
 }
 
 TEST_F( ArrayTest, ConstItr )
