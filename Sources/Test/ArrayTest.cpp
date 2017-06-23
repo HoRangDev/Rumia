@@ -31,7 +31,7 @@ TEST_F( ArrayTest, Reserve )
     EXPECT_EQ( arr.GetCapacity( ), 4 );
     arr.Reserve( 8 );
     EXPECT_EQ( arr.GetCapacity( ), 8 );
-    // arr.Reserve( 4 ); // it will be make assertion
+    // arr.Reserve( 4 ); // it going to make assertion
 }
 
 TEST_F( ArrayTest, Resize )

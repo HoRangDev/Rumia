@@ -410,10 +410,9 @@ namespace Rumia
             return m_size;
         }
 
-        template <typename Ty>
-        void Erase( Ty&& element )
+        void Erase( const T& element )
         {
-            size_t foundIndex = IndexOf( std::forward<Ty>( element ) );
+            size_t foundIndex = IndexOf( element );
             if ( foundIndex != m_size )
             {
                 EraseAt( foundIndex );
