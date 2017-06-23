@@ -1,3 +1,4 @@
+#ifdef __TEST__
 #include "PairTest.h"
 
 PairTest::PairTest( )
@@ -32,3 +33,4 @@ TEST_F( PairTest, TupleSize )
 {
     EXPECT_EQ( 2, ( Rumia::TupleSize<Rumia::Pair<int, int>>::value ) );
 }
+#endif

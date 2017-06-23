@@ -11,8 +11,8 @@ int _tmain( int argc, TCHAR* argv[ ] )
 }
 #else
 #include "DefaultAllocator.h"
-#include "RumiaArray.h"
-#include "RumiaList.h"
+#include "Array.h"
+#include "List.h"
 using namespace Rumia;
 
 #if _DEBUG | DEBUG

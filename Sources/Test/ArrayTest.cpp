@@ -193,4 +193,19 @@ TEST_F( ArrayTest, Erase )
     arr.Erase( 999 );
     EXPECT_EQ( arr.GetSize( ), 3 );
 }
+
+TEST_F( ArrayTest, ConstItr )
+{
+    arr.Clear( );
+    arr.Push( 1 );
+    arr.Push( 2 );
+    arr.Push( 3 );
+
+    int Counter = 1;
+    for ( auto itr = arr.cbegin( ); itr != arr.cend( ); ++itr )
+    {
+        EXPECT_EQ( ( *itr ), Counter );
+        ++Counter;
+    }
+}
 #endif
