@@ -301,6 +301,22 @@ namespace Rumia
                 if ( element == ( node->m_data ) )
                 {
                     --m_count;
+                    if ( node->m_prev != nullptr )
+                    {
+                        node->m_prev->m_next = node->m_next;
+                    }
+
+                    if ( node->m_next != nullptr )
+                    {
+                        node->m_next->m_prev = node->m_prev;
+                    }
+
+                    if ( node == m_root )
+                    {
+                        m_root = nullptr;
+                        m_root = node->m_next;
+                    }
+
                     RUMIA_DELETE( m_allocator, node );
                     return;
                 }
