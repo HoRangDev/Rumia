@@ -398,6 +398,11 @@ namespace Rumia
             return iterator( ( *this ), IndexOf( target ) );
         }
 
+        const_iterator Find( const T& target ) const
+        {
+            return const_iterator( ( *this ), IndexOf( target ) );
+        }
+
         // When method didn't find out passed element, it'll be return size of array.
         size_t IndexOf( const T& target ) const
         {
