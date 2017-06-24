@@ -268,6 +268,26 @@ namespace Rumia
             return std::move( data );
         }
 
+        void Erase( const T& element )
+        {
+            for ( Node<T>* node = m_root; node != nullptr;)
+            {
+                if ( element == ( node->m_data ) )
+                {
+                    RUMIA_DELETE( m_allocator, node );
+                    return;
+                }
+
+                node = node->m_next;
+            }
+        }
+
+        void Erase( const iterator& iterator )
+        {
+            const T& data = ( *iterator );
+            Erase( data );
+        }
+
         void Clear( )
         {
             for ( Node<T>* node = m_root; node != nullptr; )
