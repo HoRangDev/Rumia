@@ -75,6 +75,45 @@ namespace Rumia
 
         };
 
+        class const_iterator : public Rumia::Iterator<T, ForwardList>
+        {
+        public:
+            const_iterator( ContainerType& container, Node<T>* currentNode ) :
+                Iterator<T, ForwardList>( container ), m_currentNode( currentNode )
+            {
+            }
+
+            ~const_iterator( ) { }
+
+            const_iterator& operator++( )
+            {
+                assert( m_currentNode != nullptr );
+                m_currentNode = m_currentNode->m_next;
+                return ( *this );
+            }
+
+            T& operator*( ) const override
+            {
+                return ( m_currentNode->m_data );
+            }
+
+            bool operator==( const const_iterator& rhs ) const
+            {
+                return ( &m_container == &rhs.m_container ) &&
+                    ( m_currentNode = rhs.m_currentNode );
+            }
+
+            bool operator!=( const const_iterator& rhs ) const
+            {
+                return ( &m_container != &rhs.m_container ) ||
+                    ( m_currentNode != rhs.m_currentNode );
+            }
+
+        private:
+            Node<T>* m_currentNode;
+
+        };
+
     public:
         ForwardList( ) :
             ForwardList( TAllocator( ) )
@@ -175,6 +214,16 @@ namespace Rumia
         iterator end( )
         {
             return iterator( ( *this ), nullptr );
+        }
+
+        const_iterator cbegin( ) const
+        {
+            return const_iterator( ( *this ), m_root );
+        }
+
+        const_iterator cend( ) const
+        {
+            return const_iterator( ( *this ), nullptr );
         }
 
         inline bool IsEmpty( ) const { return m_root == nullptr; }
