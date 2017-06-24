@@ -300,13 +300,13 @@ namespace Rumia
         }
 
         template <typename Ty>
-        void Push( Ty&& element )
+        void PushBack( Ty&& element )
         {
             Growth( );
             m_elements[ m_size++ ] = std::forward<Ty>( element );
         }
 
-        T Pop( )
+        T PopBack( )
         {
             assert( !IsEmpty( ) );
             return m_elements[ --m_size ];

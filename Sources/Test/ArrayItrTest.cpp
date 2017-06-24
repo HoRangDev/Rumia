@@ -2,9 +2,9 @@
 
 void ArrayItrTest::SetUp( )
 {
-    arr.Push( 1 );
-    arr.Push( 2 );
-    arr.Push( 3 );
+    arr.PushBack( 1 );
+    arr.PushBack( 2 );
+    arr.PushBack( 3 );
 }
 
 void ArrayItrTest::TearDown( )
