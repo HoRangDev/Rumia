@@ -136,5 +136,5 @@ TEST_F( ListTest, Erase )
     EXPECT_EQ( 2, list.GetSize( ) );
     list.Erase( list.begin( ) );
     EXPECT_EQ( 1, list.GetSize( ) );
-    //EXPECT_EQ( 3, ( *( list.begin( ) ) ) );
+    EXPECT_EQ( 3, ( *( list.begin( ) ) ) );
 }

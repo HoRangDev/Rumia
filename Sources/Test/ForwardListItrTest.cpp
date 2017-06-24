@@ -2,9 +2,9 @@
 
 void ForwardListItrTest::SetUp( )
 {
-    list.Push( 3 );
-    list.Push( 2 );
-    list.Push( 1 );
+    list.PushFront( 3 );
+    list.PushFront( 2 );
+    list.PushFront( 1 );
 }
 
 void ForwardListItrTest::TearDown( )

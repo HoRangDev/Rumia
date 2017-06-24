@@ -317,7 +317,6 @@ namespace Rumia
                         m_root = node->m_next;
                     }
 
-                    node->m_data.~T( );
                     RUMIA_DELETE( m_allocator, node );
                     return;
                 }

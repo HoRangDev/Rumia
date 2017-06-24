@@ -75,11 +75,11 @@ namespace Rumia
 
         };
 
-        class const_iterator : public Rumia::Iterator<T, ForwardList>
+        class const_iterator : public Rumia::Iterator<T, const ForwardList>
         {
         public:
             const_iterator( ContainerType& container, Node<T>* currentNode ) :
-                Iterator<T, ForwardList>( container ), m_currentNode( currentNode )
+                Iterator<T, const ForwardList>( container ), m_currentNode( currentNode )
             {
             }
 
@@ -175,13 +175,13 @@ namespace Rumia
         }
 
         template <typename Ty>
-        void Push( Ty&& element )
+        void PushFront( Ty&& element )
         {
             m_root = RUMIA_NEW( m_allocator, Node<Ty>, std::forward<Ty>(element), m_root );
             ++m_count;
         }
 
-        T Pop( )
+        T PopFront( )
         {
             assert( !IsEmpty( ) );
             Node<T>* popedNode = m_root;
@@ -191,6 +191,64 @@ namespace Rumia
             RUMIA_DELETE( m_allocator, popedNode );
             --m_count;
             return data;
+        }
+
+        iterator Find( const T& element )
+        {
+            for ( Node<T>* node = m_root; node != nullptr; node = node->m_next )
+            {
+                if ( node->m_data == element )
+                {
+                    return iterator( ( *this ), node );
+                }
+            }
+
+            return ( this->end( ) );
+        }
+
+        const_iterator Find( const T& element ) const
+        {
+            for ( Node<T>* node = m_root; node != nullptr; node = node->m_next )
+            {
+                if ( node->m_data == element )
+                {
+                    return const_iterator( ( *this ), node );
+                }
+            }
+
+            return ( this->cend( ) );
+        }
+
+        void Erase( const T& element )
+        {
+            Node<T>* prevNode = nullptr;
+            for ( Node<T>* node = m_root; node != nullptr; node = node->m_next )
+            {
+                if ( node->m_data == element )
+                {
+                    if ( prevNode != nullptr )
+                    {
+                        prevNode->m_next = node->m_next;
+                    }
+
+                    if ( node == m_root )
+                    {
+                        m_root = node->m_next;
+                    }
+
+                    RUMIA_DELETE( m_allocator, node );
+                    --m_count;
+                    return;
+                }
+
+                prevNode = node;
+            }
+        }
+
+        void Erase( const iterator& itr )
+        {
+            const T& data = ( *itr );
+            Erase( data );
         }
 
         void Clear( )
