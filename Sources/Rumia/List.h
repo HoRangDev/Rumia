@@ -277,6 +277,8 @@ namespace Rumia
                     return iterator( ( *this ), node );
                 }
             }
+
+            return ( this->end( ) );
         }
 
         const_iterator Find( const T& element ) const
@@ -288,6 +290,8 @@ namespace Rumia
                     return const_iterator( ( *this ), node );
                 }
             }
+
+            return ( this->cend( ) );
         }
 
         void Erase( const T& element )
@@ -296,6 +300,7 @@ namespace Rumia
             {
                 if ( element == ( node->m_data ) )
                 {
+                    --m_count;
                     RUMIA_DELETE( m_allocator, node );
                     return;
                 }
