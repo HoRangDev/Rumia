@@ -115,3 +115,26 @@ TEST_F( ListTest, MoveOperator )
     EXPECT_EQ( movedList.PopBack( ), 1 );
     EXPECT_TRUE( list.IsEmpty( ) );
 }
+
+TEST_F( ListTest, Find )
+{
+    list.PushBack( 1 );
+    list.PushBack( 2 );
+
+    EXPECT_EQ( 1, ( *( list.Find( 1 ) ) ) );
+}
+
+TEST_F( ListTest, Erase )
+{
+    list.PushBack( 1 );
+    list.PushBack( 2 );
+    list.PushBack( 3 );
+
+    list.Erase( 4 );
+    EXPECT_EQ( 3, list.GetSize( ) );
+    list.Erase( 2 );
+    EXPECT_EQ( 2, list.GetSize( ) );
+    list.Erase( list.begin( ) );
+    EXPECT_EQ( 1, list.GetSize( ) );
+    //EXPECT_EQ( 3, ( *( list.begin( ) ) ) );
+}
