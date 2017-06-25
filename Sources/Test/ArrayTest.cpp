@@ -2,7 +2,7 @@
 #include "ArrayTest.h"
 
 ArrayTest::ArrayTest( ) :
-    allocator( Rumia::DefaultAllocator( ) ),
+    allocator( Rumia::Allocator( ) ),
     arr( Rumia::Array<int>( allocator ) ),
     objArr( Rumia::Array<SomeClass>( allocator ) )
 {

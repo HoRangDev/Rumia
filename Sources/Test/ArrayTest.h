@@ -14,7 +14,7 @@ public:
     virtual void TearDown( ) override;
 
 public:
-    Rumia::DefaultAllocator allocator;
+    Rumia::Allocator allocator;
     Rumia::Array<int> arr;
     Rumia::Array<SomeClass> objArr;
 

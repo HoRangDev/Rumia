@@ -16,7 +16,7 @@ public:
     virtual void TearDown( ) override;
 
 public:
-    Rumia::DefaultAllocator allocator;
+    Rumia::Allocator allocator;
     Rumia::ForwardList<int> list;
 
 };

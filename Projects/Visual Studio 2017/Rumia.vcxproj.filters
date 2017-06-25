@@ -6,9 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Sources\Rumia\DefaultAllocator.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Rumia\List.h">
       <Filter>Sources</Filter>
     </ClInclude>

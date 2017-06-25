@@ -1,7 +1,7 @@
 #include "ForwardListTest.h"
 
 ForwardListTest::ForwardListTest( ) :
-    allocator( Rumia::DefaultAllocator( ) ),
+    allocator( Rumia::Allocator( ) ),
     list( Rumia::ForwardList<int>( allocator ) )
 {
 }
