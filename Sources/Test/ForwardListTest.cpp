@@ -49,6 +49,16 @@ TEST_F( ForwardListTest, Find )
     EXPECT_EQ( ( *list.Find( 2 ) ), 2 );
 }
 
+TEST_F( ForwardListTest, FindIf )
+{
+    list.PushFront( 1 );
+    list.PushFront( 2 );
+    list.PushFront( 3 );
+
+    int FoundData = ( *list.FindIf( [ ]( int Data )->bool { return ( Data == 2 ); } ) );
+    EXPECT_EQ( FoundData, 2 );
+}
+
 TEST_F( ForwardListTest, Erase )
 {
     list.PushFront( 3 );

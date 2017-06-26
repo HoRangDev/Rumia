@@ -200,6 +200,17 @@ TEST_F( ArrayTest, Erase )
     EXPECT_EQ( 2, arr.At( 0 ) );
 }
 
+TEST_F( ArrayTest, FindIf )
+{
+    arr.Clear( );
+    arr.PushBack( 1 );
+    arr.PushBack( 2 );
+    arr.PushBack( 3 );
+
+    int FoundData = ( *arr.FindIf( [ ]( int Data )->bool { return ( Data == 2 ); } ) );
+    EXPECT_EQ( FoundData, 2 );
+}
+
 TEST_F( ArrayTest, ConstItr )
 {
     arr.Clear( );

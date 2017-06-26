@@ -124,6 +124,16 @@ TEST_F( ListTest, Find )
     EXPECT_EQ( 1, ( *( list.Find( 1 ) ) ) );
 }
 
+TEST_F( ListTest, FindIf )
+{
+    list.PushBack( 1 );
+    list.PushBack( 2 );
+    list.PushBack( 3 );
+
+    int FoundData = ( *list.FindIf( [ ]( int Data )->bool { return ( Data == 2 ); } ) );
+    EXPECT_EQ( FoundData, 2 );
+}
+
 TEST_F( ListTest, Erase )
 {
     list.PushBack( 1 );

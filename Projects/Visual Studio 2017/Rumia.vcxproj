@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Sources\Rumia\Algorithm.h" />
     <ClInclude Include="..\..\Sources\Rumia\Allocator.h" />
     <ClInclude Include="..\..\Sources\Rumia\Array.h" />
     <ClInclude Include="..\..\Sources\Rumia\ForwardList.h" />

@@ -27,6 +27,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Sources\Test\AlgorithmTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ArrayItrTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\ForwardListItrTest.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="..\..\Sources\Test\TupleTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Sources\Test\AlgorithmTest.h" />
     <ClInclude Include="..\..\Sources\Test\ArrayItrTest.h" />
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h" />
     <ClInclude Include="..\..\Sources\Test\ForwardListItrTest.h" />
