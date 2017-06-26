@@ -7,82 +7,76 @@
     <Filter Include="Sources\Tests">
       <UniqueIdentifier>{a09d96cb-c9c9-4c64-b05a-6dc96a46bab6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Tests\List">
-      <UniqueIdentifier>{a5b03ec2-0a6a-4ad9-903c-c6e5e6ee0bcf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Tests\Tuple">
-      <UniqueIdentifier>{a72eb7c2-bdab-47ad-b382-ca9a8b65be6c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\Tests\Algorithm">
       <UniqueIdentifier>{663d88ee-33d9-441f-8c06-2f28a92374fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Array">
-      <UniqueIdentifier>{ea3c4ccc-1176-4e4c-bd40-a2138ac05c66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Iterator">
+    <Filter Include="Sources\Tests\Iterator">
       <UniqueIdentifier>{cc53b0dc-d817-442e-9d2f-c012cc58f237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Tests\Container">
+      <UniqueIdentifier>{d2cb156f-69cd-4ebb-93bc-acd60cdd553b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp">
-      <Filter>Sources\Array</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Test\ListTest.cpp">
-      <Filter>Sources\Tests\List</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Test\ForwardListTest.cpp">
-      <Filter>Sources\Tests\List</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Sources\Test\ArrayItrTest.cpp">
-      <Filter>Sources\Iterator</Filter>
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Test\ListItrTest.cpp">
-      <Filter>Sources\Iterator</Filter>
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Test\ForwardListItrTest.cpp">
-      <Filter>Sources\Iterator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Sources\Test\TupleTest.cpp">
-      <Filter>Sources\Tests\Tuple</Filter>
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Sources\Test\PairTest.cpp" />
     <ClCompile Include="..\..\Sources\Test\AlgorithmTest.cpp">
       <Filter>Sources\Tests\Algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\TupleTest.cpp">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ForwardListTest.cpp">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ListTest.cpp">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
-      <Filter>Sources\Array</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Test\ListTest.h">
-      <Filter>Sources\Tests\List</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Test\SomeClass.h">
       <Filter>Sources\Tests</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Sources\Test\ForwardListTest.h">
-      <Filter>Sources\Tests\List</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ArrayItrTest.h">
-      <Filter>Sources\Iterator</Filter>
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ListItrTest.h">
-      <Filter>Sources\Iterator</Filter>
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ForwardListItrTest.h">
-      <Filter>Sources\Iterator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Test\TupleTest.h">
-      <Filter>Sources\Tests\Tuple</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Sources\Test\PairTest.h">
-      <Filter>Sources\Tests\Tuple</Filter>
+      <Filter>Sources\Tests\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\AlgorithmTest.h">
       <Filter>Sources\Tests\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\PairTest.h">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\TupleTest.h">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ListTest.h">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ForwardListTest.h">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
+      <Filter>Sources\Tests\Container</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
