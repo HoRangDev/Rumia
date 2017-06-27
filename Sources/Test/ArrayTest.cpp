@@ -225,4 +225,20 @@ TEST_F( ArrayTest, ConstItr )
         ++Counter;
     }
 }
+
+TEST_F( ArrayTest, Shrink )
+{
+    arr.Clear( );
+    arr.PushBack( 1 ); // Capacity 2
+    arr.PushBack( 2 ); 
+    arr.PushBack( 3 ); // Capacity 4
+    arr.PushBack( 4 );
+    arr.PushBack( 5 ); // Capacity 8
+
+    EXPECT_EQ( arr.GetCapacity( ), 8 );
+    arr.Shrink( );
+    EXPECT_EQ( arr.GetCapacity( ), 5 );
+    EXPECT_EQ( arr[ 4 ], 5 );
+}
+
 #endif
