@@ -377,6 +377,22 @@ namespace Rumia
             }
         }
 
+        void Shrink( )
+        {
+            if ( HasUnusedCapacity( ) )
+            {
+                T* tempElements = m_elements;
+                m_elements = RUMIA_NEW_ARRAY( m_allocator, T, m_size );
+                for ( size_t Idx = 0; Idx < m_size; ++Idx )
+                {
+                    m_elements[ Idx ] = tempElements[ Idx ];
+                }
+
+                m_capacity = m_size;
+                RUMIA_DELETE_ARRAY( m_allocator, tempElements );
+            }
+        }
+
         T& At( size_t index )
         {
             return m_elements[ index ];
@@ -536,6 +552,11 @@ namespace Rumia
         inline bool IsOutOfRange( size_t index ) const
         {
             return ( index >= m_size );
+        }
+
+        inline bool HasUnusedCapacity( ) const
+        {
+            return ( ( m_capacity - m_size ) > 0 );
         }
 
     protected:
