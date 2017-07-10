@@ -16,6 +16,9 @@
     <Filter Include="Sources\Tests\Container">
       <UniqueIdentifier>{d2cb156f-69cd-4ebb-93bc-acd60cdd553b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tests\Allocator">
+      <UniqueIdentifier>{97a2326e-7a45-485e-a99f-bf35baac57d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Test\main.cpp">
@@ -45,6 +48,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Sources\Test\ArrayTest.cpp">
       <Filter>Sources\Tests\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\AllocTest.cpp">
+      <Filter>Sources\Tests\Allocator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\ArrayTest.h">
       <Filter>Sources\Tests\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\AllocTest.h">
+      <Filter>Sources\Tests\Allocator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
