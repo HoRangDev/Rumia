@@ -46,11 +46,7 @@ namespace Rumia
             T* origin = ( ( T* ) AllocateAligned( ( (sizeof( T ) * (length + headerSize )) ), ALIGN_OF( T ) ) );
             T* newMemory = origin + headerSize;
             *( ( ( size_t* ) ( newMemory - headerSize ) ) ) = length;
-
-            for ( size_t index = 0; index < length; ++index )
-            {
-                new ( newMemory + index ) T;
-            }
+            memset( newMemory, 0, sizeof( T ) * length );
 
             return newMemory;
         }
