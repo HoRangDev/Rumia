@@ -7,8 +7,7 @@
 namespace Rumia
 {
     /* Rumia::Array is Dynamic Array class **/
-    template <typename T, typename TAllocator = Rumia::Allocator,
-        typename IsChlidOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>::type>
+    template <typename T>
         class Array
     {
     public:
@@ -199,7 +198,7 @@ namespace Rumia
         using reverse_iterator = ReverseIterator<T, iterator>;
 
     public:
-        Array( TAllocator& allocator, size_t initCapacity = 2 ) :
+        Array( Rumia::Allocator& allocator, size_t initCapacity = 2 ) :
             m_allocator( allocator ),
             m_elements( nullptr ), m_capacity( 0 ), m_size( 0 )
         {
@@ -560,7 +559,7 @@ namespace Rumia
         }
 
     protected:
-        TAllocator& m_allocator;
+        Rumia::Allocator& m_allocator;
 
         /** Size of Element buffer */
         size_t m_capacity;

@@ -5,8 +5,7 @@
 
 namespace Rumia
 {
-    template <typename T, typename TAllocator = Rumia::Allocator,
-        typename IsChildOfAllocator = std::enable_if<std::is_base_of<Rumia::Allocator, TAllocator>::value>>
+    template <typename T>
     class ForwardList
     {
     protected:
@@ -115,7 +114,7 @@ namespace Rumia
         };
 
     public:
-        ForwardList( TAllocator& allocator ) :
+        ForwardList( Rumia::Allocator& allocator ) :
             m_allocator( allocator ),
             m_root( nullptr ),
             m_count( 0 )
@@ -331,7 +330,7 @@ namespace Rumia
         }
 
     protected:
-        TAllocator& m_allocator;
+        Rumia::Allocator& m_allocator;
         Node<T>* m_root;
         size_t m_count;
 
