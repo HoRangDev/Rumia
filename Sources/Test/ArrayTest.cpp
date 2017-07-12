@@ -198,6 +198,22 @@ TEST_F( ArrayTest, Erase )
     arr.PushBack( 2 );
     arr.Erase( arr.begin( ) );
     EXPECT_EQ( 2, arr.At( 0 ) );
+
+    arr.Clear( );
+    arr.PushBack( 3 );
+    arr.PushBack( 2 );
+    arr.PushBack( 1 );
+
+    for ( auto itr = arr.begin( ); itr != arr.end( ); ++itr )
+    {
+        if ( ( *itr ) == 2 )
+        {
+            arr.Erase( itr );
+        }
+    }
+
+    EXPECT_EQ( 1, arr[ 1 ] );
+    EXPECT_EQ( 3, ( *arr.begin( ) ) );
 }
 
 TEST_F( ArrayTest, FindIf )
