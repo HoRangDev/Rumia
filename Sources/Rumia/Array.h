@@ -533,7 +533,7 @@ namespace Rumia
         inline bool IsEmpty( ) const { return ( m_size == 0 ); }
         inline bool IsFull( ) const { return ( m_size == m_capacity ); }
 
-    protected:
+    private:
         inline void Growth( )
         {
             if ( IsFull( ) )
@@ -559,7 +559,7 @@ namespace Rumia
             return ( ( m_capacity - m_size ) > 0 );
         }
 
-    protected:
+    private:
         Rumia::Allocator& m_allocator;
 
         /** Size of Element buffer */
@@ -570,7 +570,6 @@ namespace Rumia
 
         T* m_elements;
 
-    protected:
         static const unsigned int CapacityExtendScale = 2;
 
     };
