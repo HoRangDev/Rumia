@@ -1,4 +1,5 @@
 #pragma once
+
 #include <type_traits>
 #include "Allocator.h"
 #include "Iterator.h"
@@ -9,7 +10,7 @@ namespace Rumia
     template <typename T>
         class List
     {
-    protected:
+    private:
         template <typename Ty>
         struct Node
         {
