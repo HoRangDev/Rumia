@@ -25,8 +25,9 @@ namespace Rumia
 
             iterator& operator++( )
             {
-                if ( m_position == ( m_container.GetSize( ) - 1 ) && !m_bIsDummy )
+                if ( m_position >= ( m_container.GetSize( ) - 1 ) && !m_bIsDummy )
                 {
+                    m_position = m_container.GetSize( ) - 1;
                     m_bIsDummy = true;
                 }
                 else
