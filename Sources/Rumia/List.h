@@ -348,10 +348,14 @@ namespace Rumia
             }
         }
 
-        void Erase( const iterator& iterator )
+        void Erase( const iterator& itr )
         {
-            const T& data = ( *iterator );
+            iterator temp = ( ++itr );
+            --itr;
+            const T& data = ( *itr );
             Erase( data );
+
+            return temp;
         }
 
         void Clear( )

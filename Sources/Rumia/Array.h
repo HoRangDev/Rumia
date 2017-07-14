@@ -467,9 +467,10 @@ namespace Rumia
             }
         }
 
-        void Erase( const iterator& itr )
+        iterator Erase( const iterator& itr )
         {
             EraseAt( itr.m_position );
+            return itr;
         }
 
         void EraseAt( size_t index )
