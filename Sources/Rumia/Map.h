@@ -104,6 +104,7 @@ namespace Rumia
             }
         }
 
+        //@Issue#1 Select wrong successor
         void Erase( const TKey& key )
         {
             Node* target = FindNode( key );
