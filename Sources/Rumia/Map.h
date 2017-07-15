@@ -417,8 +417,6 @@ namespace Rumia
 
     private:
         Rumia::Allocator&      m_allocator;
-
-    public:
         Node*                  m_root;
 
     };

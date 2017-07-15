@@ -19,6 +19,7 @@ void MapTest::TearDown( )
 TEST_F( MapTest, NodeTest )
 {
 
+    /*
     Rumia::Map<int, int> testMap{ allocator };
     testMap.Insert( Rumia::MakePair<int, int>( 1, 1 ) );
     EXPECT_EQ( testMap.m_root->m_bIsRed, false );
@@ -63,4 +64,5 @@ TEST_F( MapTest, NodeTest )
 
     testMap.Erase( 5 );
     EXPECT_EQ( testMap.m_root, nullptr );
+    */
 }
