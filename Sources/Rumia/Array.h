@@ -21,9 +21,14 @@ namespace Rumia
             {
             }
 
+            iterator( const iterator& itr ) :
+                iterator( itr.m_container, itr.m_position, itr.m_bIsDummy )
+            {
+            }
+
             ~iterator( ) { }
 
-            iterator& operator++( )
+            iterator operator++( )
             {
                 if ( m_position >= ( m_container.GetSize( ) - 1 ) && !m_bIsDummy )
                 {
@@ -38,7 +43,7 @@ namespace Rumia
                 return ( *this );
             }
 
-            iterator& operator--( )
+            iterator operator--( )
             {
                 if ( m_position == 0 && !m_bIsDummy )
                 {

@@ -41,6 +41,11 @@ namespace Rumia
             {
             }
 
+            iterator( const iterator& itr ) :
+                iterator( itr.m_container, itr.m_currentNode )
+            {
+            }
+
             ~iterator( ) { }
 
             iterator& operator++( )
@@ -348,10 +353,10 @@ namespace Rumia
             }
         }
 
-        void Erase( const iterator& itr )
+        iterator Erase( const iterator& itr )
         {
-            iterator temp = ( ++itr );
-            --itr;
+            iterator temp = ( itr );
+            ++temp;
             const T& data = ( *itr );
             Erase( data );
 
