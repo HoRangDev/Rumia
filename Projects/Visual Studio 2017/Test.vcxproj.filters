@@ -52,6 +52,9 @@
     <ClCompile Include="..\..\Sources\Test\AllocTest.cpp">
       <Filter>Sources\Tests\Allocator</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Sources\Test\MapTest.cpp">
+      <Filter>Sources\Tests\Container</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sources\Test\SomeClass.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Sources\Test\AllocTest.h">
       <Filter>Sources\Tests\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sources\Test\MapTest.h">
+      <Filter>Sources\Tests\Container</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -33,6 +33,9 @@
     <ClInclude Include="..\..\Sources\Rumia\Algorithm.h">
       <Filter>Sources</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Sources\Rumia\Map.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Sources\Rumia\Rumia.cpp">
