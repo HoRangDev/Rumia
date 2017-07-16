@@ -108,8 +108,8 @@ namespace Rumia
         void Erase( const TKey& key )
         {
             Node* target = FindNode( key );
-            Node* removeNode = nullptr;
             Node* successor = nullptr;
+            Node* removeNode = nullptr;
 
             if ( target != nullptr )
             {
@@ -119,18 +119,14 @@ namespace Rumia
                 }
                 else
                 {
-                    removeNode = target->m_left;
-                    while ( removeNode != nullptr && removeNode->m_right != nullptr )
-                    {
-                        removeNode = removeNode->m_right;
-                    }
+                    removeNode = InOrderSuccessor( target );
                 }
 
                 if ( removeNode->m_left != nullptr )
                 {
                     successor = removeNode->m_left;
                 }
-                else if ( removeNode->m_right != nullptr )
+                else
                 {
                     successor = removeNode->m_right;
                 }
@@ -153,7 +149,7 @@ namespace Rumia
                     removeNode->m_parent->m_right = successor;
                 }
 
-                if ( removeNode != target )
+                if ( target != removeNode )
                 {
                     target->m_pair = removeNode->m_pair;
                 }
@@ -416,8 +412,53 @@ namespace Rumia
             }
         }
 
+        Node* InOrderSuccessor( Node* target )
+        {
+            if ( target != nullptr )
+            {
+                if ( target->m_left != nullptr )
+                {
+                    return MaxValue( target->m_left );
+                }
+                else
+                {
+                    Node* me = target;
+                    Node* parent = me->m_parent;
+                    while ( parent != nullptr && me == parent->m_left )
+                    {
+                        me = parent;
+                        parent = parent->m_parent;
+                    }
+
+                    return parent;
+                }
+            }
+        }
+
+        Node* MinValue( Node* target )
+        {
+            Node* temp = target;
+            while ( temp != nullptr && temp->m_left != nullptr )
+            {
+                temp = temp->m_left;
+            }
+            return temp;
+        }
+
+        Node* MaxValue( Node* target )
+        {
+            Node* temp = target;
+            while ( temp != nullptr && temp->m_right != nullptr )
+            {
+                temp = temp->m_right;
+            }
+            return temp;
+        }
+
     private:
         Rumia::Allocator&      m_allocator;
+
+        public:
         Node*                  m_root;
 
     };
