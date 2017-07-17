@@ -2,5 +2,5 @@
 
 TEST_F( AllocTest, SharedPtr )
 {
-    auto Ptr = RUMIA_MAKE_SHARED( allocator, int, 0 );
+    auto Ptr = Rumia::MakeShared<int>( allocator, 0 );
 }
